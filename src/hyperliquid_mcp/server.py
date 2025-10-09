@@ -30,7 +30,7 @@ from hyperliquid_mcp.tools.order import OrderClient
 logger = get_logger(__name__)
 
 # Initialize MCP server
-mcp: FastMCP = FastMCP("Hyperliquid MCP Server")
+mcp: FastMCP = FastMCP("Hyperliquid MCP Server", port=3000,host="0.0.0.0")
 
 # Initialize specialized clients
 account_client = AccountClient()
@@ -428,7 +428,7 @@ def main() -> None:
     logger.info("Starting Hyperliquid MCP Server...")
 
     # Run the server
-    mcp.run(show_banner=False)
+    mcp.run(show_banner=False, transport="streamable-http")
 
 
 if __name__ == "__main__":
